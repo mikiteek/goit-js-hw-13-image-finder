@@ -1,7 +1,5 @@
 import searchOpt from './search-options';
-//https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=что_искать&page=номер_страницы
-// &per_page=12&key=твой_ключ
-// let page = 1;
+
 export default {
   searchQuery: '',
   page: 1,
