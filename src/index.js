@@ -4,7 +4,11 @@ import refs from "./js/refs"
 import handleSpinner from "./js/components/spinner";
 const throttle = require("lodash.throttle");
 import updateImagesMarkup from "./js/update-images-markup"
+import * as basicLightbox from 'basiclightbox';
+import "basiclightbox/dist/basicLightbox.min.css";
 import './sass/styles.scss';
+
+const instance = basicLightbox.create(refs.modal);
 // const loadMoreBtn = new LoadMoreBtn({
 //   selector: ".load-more",
 //   hidden: true,
@@ -29,9 +33,9 @@ function fetchImages() {
   handleSpinner.showSpinner();
   // loadMoreBtn.disable();
   fetchQuery.fetchImages().then(images => {
-    // console.log(images);
     updateImagesMarkup(images);
     windowSchrollTo();
+    refs.imagesUl.addEventListener("click", onGalleryClick);
     // loadMoreBtn.show();
     // loadMoreBtn.enable();
   });
@@ -53,3 +57,23 @@ function windowSchrollTo() {
     behavior: "smooth"
   })
 }
+
+
+function onGalleryClick(event) {
+  const img = event.target;
+  if (img.nodeName !== "IMG") {
+    return;
+  }
+  instance.show();
+  refs.largeImg = document.querySelector(".lightbox__img");
+  setLargeImage(img);
+}
+
+function setLargeImage(imageRef) {
+  refs.largeImg.alt = imageRef.alt;
+  refs.largeImg.src = imageRef.dataset.source;
+}
+// function clearAttribute() {
+//   refs.largeImg.alt = "";
+//   refs.largeImg.src = "";
+// }
