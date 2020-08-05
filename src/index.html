@@ -4,10 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Webpack Assembly</title>
+  <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+  />
+  <title>Image finder</title>
 </head>
 
 <body>
-<h1>Webpack starter assembly</h1>
+<main class="container">
+  <form class="search-form" id="search-form">
+    <input
+        class="search-form__input"
+        type="text"
+        name="query"
+        autocomplete="off"
+        placeholder="Search images..."
+    />
+    <button type="submit" class="is-hidden search-form__button-search">Search</button>
+  </form>
+  <div class="spinner js-spinner js-is-hidden"></div>
+  <ul class="gallery js-gallery">
+    <!-- Список <li> с карточками изображений -->
+  </ul>
+  <button class="load-more is-hidden">Load more</button>
+</main>
+
 </body>
 </html>
